@@ -1,0 +1,32 @@
+<script>// WARNING: For POST requests, body is set to null by browsers.
+var data = JSON.stringify({
+  "requests": [
+    {
+      "image": {
+        "content": "iVBORw0KGgoAAAANSUhEUgAAAEMAAAAYCAYAAAChg0BHAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADgElEQVRYhe2YTWhdRRTHfwlpSKdRYggxlUYK0bbTloAiiF0UTZy2tEvdVRQKpUoX3bSLpqtSEKoLbUEQCl30Y6FCF4KbjEoRbAqFQkUzEopIyCLUkkWEIT4eeV3Meel9k/dx5+bDWvzD5dw7H/9z5syZMzMX1gFG6Ur03WuU7lkP3SnoiAuM0l1S3iky+3QCZevd/bwKjNIV612bvA8DnwL7gHFgf1HDxcEfA1vFrk6p+h34ynp3N5WzLVKwE/itRZ8p6932FCVG6QHgPPAesCDFt613oyk8Gb4KsAi0A/OAB0pS9qLIUevdTym8cWR0ibwBTAL/AOXomStg/z6gDzgMfAv8XEd3Cm4DWwgDnspWGKVfAiaAC8ArhTUYpfcYpStG6YMrMLSVjopR+o5ReiJblsjxl1H6apP6MdGzI4W3PfquRsZC3HA1kMkfZTKRYb1rS3RIB2FZNMLXIvem2LeuzqgmUjLOqDohU5cHZR4nzHr4gzCGl1Psi53xncg1cUYGJcQZBaICQsJ8tlGl9W4ReEBIprmxFKpi0GHgOvCqUfoo8ALQTZiJWeAO8KX1rtyIMLuVNkHNzCZGBcAUMGKUfpeQTAGUPN0i2+U9N+J1e0Q+LxG8Py+Gl4A9wPvAO8Bb9chyOgKinFEA5whR/E2D+lmgh0RnNMoZJ4DnrHebrXeD1rsh690zhEPOm0bpkXpkCTO8ImfI+UEDHwBngGPAIWAXsNF6txmYBkopSzA2aBL43Hp3sUH7q8AYsBv4MWkEtVjKGUVhvZsBrjRp0gv8Ws1JeSaqxiDr3U3gZpP2D0Wu9F6xlDMSllZuGKX7CYe8PyF/xMbLpBWqe/uGxH4xlpZJwd2kFd4WOdG0VYRUZ/SL/LtaYJTeZpTeksiz7NC1Aq4ayEXzNCH5j7doWzMJNVtrNpwahO9Rkb9Im2HgHjADDCbYvCxnpHDJIEYJS6EfeD7z/hrhfHHMejffjCMeX0e2wij9IfAF4dA1J0rvy3cfMADcAr6X/tXDWRc5IZyfsPzCl4tL+r8O/MDjy2Mp8z4NnLXeXW7GUy+PxFf4PuAA8AawgzD4qnFzhLA7n/W4Ufok8JH1bqiZ8nhAsTEyyFOpXKuJeDd5CFyTpyWM0go4DnyWorRBdt9E+JeSxPU/nmaswda6Jpxrjn/DEf9JR+VFkcEVdsiT7MnVtO0RzQNF21NeizIAAAAASUVORK5CYII="
+      },
+      "features": [
+        {
+          "type": "TEXT_DETECTION"
+        }
+      ]
+    }
+  ]
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBfJnpeu2V2CjPJYvtMgfzJMK-5H0huwgo");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+
+console.log(1);
+</script>
